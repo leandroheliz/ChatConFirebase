@@ -1,7 +1,7 @@
 import { AuthProvider } from "./context/auth";
 import { ChatProvider } from "./context/chat";
 import AppRoutes from "./routes/AppRoutes";
-import 'moment-timezone'
+import 'moment-timezone';
 
 function App() {
   return (

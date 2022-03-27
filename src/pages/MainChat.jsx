@@ -2,17 +2,17 @@ import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth";
 import { ChatContext } from "../context/chat";
-// import Moment from "react-moment";
 
 const MainChat = () => {
   const navigate = useNavigate();
   const { user, persistUser, singOut } = useContext(AuthContext);
-  const { sendMessage, getChatHistory, chatData, loading, updateChatHistory } = useContext(ChatContext);
+  const { sendMessage, getChatHistory, chatData, loading, updateChatHistory } =
+    useContext(ChatContext);
   const [messageToSave, setMessageToSave] = useState("");
 
   useEffect(() => {
     if (!persistUser()) {
-      return navigate("/admin/login");
+      return navigate("/");
     }
     getChatHistory();
     //eslint-disable-next-line
@@ -20,15 +20,15 @@ const MainChat = () => {
 
   const singUserOut = () => {
     singOut();
-    navigate("/admin/login");
+    navigate("/");
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { email } = user;
     await sendMessage(email, messageToSave);
-    updateChatHistory()
-    setMessageToSave('')
+    updateChatHistory();
+    setMessageToSave("");
   };
 
   const chatHistory =
@@ -45,9 +45,11 @@ const MainChat = () => {
     <>
       <div className="chat-grid">
         <div className="sidebar">
-          <p>Signed in as {user?.email}</p>
+          <p>
+            Signed in as <b>{user?.email}</b>
+          </p>
           <p className="sing-out" onClick={singUserOut}>
-            Sing out
+            <b>Sing out</b>
           </p>
         </div>
         <div className="chat">
@@ -55,26 +57,28 @@ const MainChat = () => {
             return c.from === user?.email ? (
               <div key={c.time} className="user-chat">
                 <div className="chat-info">
-                  {c.from}on{" "}
-                  <span>
-                    {/* <Moment format="MMMM DD, YYYY HH:mm">
-                      </Moment> */}
-                      {c.time}
-                  </span>
+                  {c.from}on <span>{c.time}</span>
+                  <button className="btnEdit">
+                    <i className="fa-solid fa-file-pen"></i>
+                  </button>
+                  <button className="btnDelete">
+                    <i className="fa-solid fa-trash-can"></i>
+                  </button>
                 </div>
-                {c.message}
+                <b>{c.message}</b>
               </div>
             ) : (
               <div key={c.time} className="sender-chat">
                 <div className="chat-info">
-                  {c.from} on{" "}
-                  <span>
-                    {/* <Moment format="MMMM DD, YYYY HH:mm">
-                      </Moment> */}
-                      {c.time}
-                  </span>
+                  {c.from} on <span>{c.time}</span>
+                  <button className="btnEdit">
+                    <i className="fa-solid fa-file-pen"></i>
+                  </button>
+                  <button className="btnDelete">
+                    <i className="fa-solid fa-trash-can"></i>
+                  </button>
                 </div>
-                {c.message}
+                <b>{c.message}</b>
               </div>
             );
           })}

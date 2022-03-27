@@ -1,6 +1,8 @@
 import { useContext, useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { AuthContext } from "../context/auth"
+import AuthLayout from "../layout/AuthLayout";
+import Footer from "../layout/Footer";
 
 const Login = () => {
 
@@ -10,7 +12,7 @@ const Login = () => {
 
   useEffect(() => {
     if(!persistUser()){
-     return navigate('/admin/login')
+     return navigate('/')
     }else{
       return navigate('/chat')  
       }
@@ -46,7 +48,9 @@ const Login = () => {
   }
 
   return (
+    <>
     <div className="container">
+      <AuthLayout/>
       <h2 className="text-center">Login to start getting chat</h2>
       <form onSubmit={handleSubmit}>
         <div>
@@ -62,11 +66,15 @@ const Login = () => {
          <input type="submit" value={!loading ? "Validating ..." : "Login"} className="inputsBtn btnRegister"/>
          </div>
       </form>
+      <i className="fa-brands fa-rocketchat fa-2x"></i>
+      <br/>
       <p>
        Does no Have an account? please register {''}
-        <Link to={'/admin/register'}>Follow this link</Link>
+        <Link to={'/register'}>Follow this link</Link>
       </p>
     </div>
+    <Footer/>
+          </>
   )
 }
 

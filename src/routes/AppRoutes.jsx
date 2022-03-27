@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
+import Login from "../pages/Login"
 import MainChat from "../pages/MainChat"
-import PublicRoutes from "./PublicRoutes"
+import Register from "../pages/Register"
 
 const AppRoutes = () => {
   return (
@@ -8,7 +9,8 @@ const AppRoutes = () => {
   <BrowserRouter>
   <Routes>
     <Route path="/chat" element={<MainChat />} />
-    <Route path="/admin/*" element={<PublicRoutes />} />
+    <Route path="/register" element={<Register />} />
+        <Route path="/" element={<Login />} />
   </Routes>
   </BrowserRouter>
     </>

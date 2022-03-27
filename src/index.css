@@ -32,10 +32,26 @@ margin-right: var(--size-2);
   font-weight: var(--font-weight-6);
 }
 
+.chat-footer{
+  margin-left: var(--size-3);
+  font-weight: var(--font-weight-5);
+}
+
+
 nav{
   padding: var(--size-4);
   text-transform: uppercase;
   border-bottom: 1px solid var(--violet-9);
+}
+
+footer{
+  padding: var(--size-4);
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--violet-9);
+}
+
+a{
+margin: 0 8px;
 }
 
 .container{
@@ -96,9 +112,9 @@ overflow-y: scroll;
   background-color: var(--violet-6);
   border-radius: 0.5rem;
   min-height: 2rem;
-  width: calc(100% - 3rem);
+  width: calc(100% - 4rem);
   margin: 8px 24px 0 0;
-  border: 1px solid var(--violet-9);
+  border: 1px solid var(--violet-6);
   padding: var(--size-1);
 }
 
@@ -109,7 +125,7 @@ font-size: 18px;
 .chat-form-container{
   width: var(--container);
   margin: var(--center);
-  height: 3rem;
+  height: 4rem;
 }
 
 .chat-input-container{
@@ -129,6 +145,20 @@ margin: 0 var(--size-2) 0 0;
 
 .btnRegister{
   animation: var(--animation-pulse);
+}
+
+.btnDelete{
+  background: none;
+  border: none;
+  color: rgb(0, 0, 0);
+  margin: 0 15px;
+}
+
+.btnEdit{
+  background: none;
+  border: none;
+  color: rgb(0, 0, 0);
+  margin: 0 15px; 
 }
 
 .alert-error{
