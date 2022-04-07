@@ -51,26 +51,30 @@ const Login = () => {
     <>
     <div className="container">
       <AuthLayout/>
-      <h2 className="text-center">Login to start getting chat</h2>
+      <br/>
+      <div className="flex justify-center">
+      <h4>Inicia Sesión para Utilizar el Chat</h4>
+      </div>
+      <br/>
       <form onSubmit={handleSubmit}>
         <div>
-          <input type="text" name="email" placeholder=" Email" className="inputs" value={newUser.email}
+          <input type="text" name="email" placeholder=" Correo" className="inputs" value={newUser.email}
           onChange={handleInputChange} />
         </div>
         <div>
-          <input type="new-password" name="password" placeholder=" Password" className="inputs" value={newUser.password}
+          <input type="new-password" name="password" placeholder=" Contraseña" className="inputs" value={newUser.password}
           onChange={handleInputChange} />
         </div>
         {error && <p className='alert-error'>{message}</p>}
         <div className="flex justify-center">
-         <input type="submit" value={!loading ? "Validating ..." : "Login"} className="inputsBtn btnRegister"/>
+         <input type="submit" value={!loading ? "Validando ..." : "Iniciar Sesión"} className="inputsBtn btnRegister"/>
          </div>
       </form>
       <i className="fa-brands fa-rocketchat fa-2x"></i>
       <br/>
       <p>
-       Does no Have an account? please register {''}
-        <Link to={'/register'}>Follow this link</Link>
+      ¿No tenes cuenta? Registrate. {''}
+        <Link to={'/register'}>Sigue este Link</Link>
       </p>
     </div>
     <Footer/>

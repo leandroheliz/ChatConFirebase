@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth";
 import { ChatContext } from "../context/chat";
+import picUser from '../assets/user.png'
 
 const MainChat = () => {
   const navigate = useNavigate();
@@ -39,17 +40,20 @@ const MainChat = () => {
       : null;
 
   if (loading) {
-    return <h1 className="container">Loading Chat...</h1>;
+    return <h1 className="container flex justify-center">Cargando Chat...</h1>;
   }
   return (
     <>
       <div className="chat-grid">
         <div className="sidebar">
-          <p>
-            Signed in as <b>{user?.email}</b>
+          <p className="flex justify-center">
+            <img src={picUser} alt="" style={{width:"60px", height:"60px"}}/>
+          </p>
+          <p className="flex justify-center">
+          <b>Sesión iniciada como: {user?.email}</b>
           </p>
           <p className="sing-out" onClick={singUserOut}>
-            <b>Sing out</b>
+            <b>Cerrar Sesión</b>
           </p>
         </div>
         <div className="chat">
@@ -84,6 +88,7 @@ const MainChat = () => {
           })}
         </div>
       </div>
+      <br/>
       <div className="chat-form-container">
         <form className="chat-form" onSubmit={handleSubmit}>
           <div className="chat-input-container">
@@ -92,8 +97,9 @@ const MainChat = () => {
               className="chat-input inputs"
               value={messageToSave}
               onChange={(e) => setMessageToSave(e.target.value)}
+              style={{width:'65%'}}
             />
-            <input className="inputs chat-send" type="submit" value="send" />
+            <input className="inputs chat-send" type="submit" value="Enviar" style={{width:'200px'}}/>
           </div>
         </form>
       </div>

@@ -28,7 +28,7 @@ export const AuthProvider = ({ children }) => {
       setLoading(true);
       if (email === "" || password === "") {
         setError(true);
-        setMessage("All fields are required");
+        setMessage("Todos los campos son Requeridos");
         return;
       }
       const newUser = await createUserWithEmailAndPassword(
@@ -41,10 +41,11 @@ export const AuthProvider = ({ children }) => {
       setLoading(false);
       return newUser;
     } catch (error) {
+      console.error("error",error);
       if(error.code === "auth/email-already-in-use"){
         setLoading(false);
         setError(true);
-        setMessage("User already in line (login)");
+        setMessage("Usuario ya Registrado ( Inicie Sesión )");
         return;
       }
     } finally{
@@ -58,7 +59,7 @@ export const AuthProvider = ({ children }) => {
       setLoading(true);
       if (email === "" || password === "") {
         setError(true);
-        setMessage("All fields are required" || error.code === "auth/email-already-in-use");
+        setMessage("Todos los campos son Requeridos" || error.code === "auth/email-already-in-use");
       }
       const singInUser = await signInWithEmailAndPassword(
         auth,
@@ -72,13 +73,13 @@ export const AuthProvider = ({ children }) => {
     } catch (error) {
       if(error.code === "auth/wrong-password"){
         setError(true);
-        setMessage("Invalid Credentials (incorrect username or password)" || error.code === "auth/wrong-password")
+        setMessage("Credenciales Invalidas. (Usuario o Contraseña Incorrectos)" || error.code === "auth/wrong-password")
         setLoading(false);
         return
     }
     if(error.code === "auth/user-not-found"){
       setError(true);
-      setMessage("User Not Found, Register" || error.code === "auth/wrong-password")
+      setMessage("Usuario no encontrado, Registrese" || error.code === "auth/wrong-password")
       setLoading(false);
       return
     }
