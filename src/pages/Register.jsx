@@ -61,7 +61,7 @@ const Register = () => {
           onChange={handleInputChange} />
         </div>
         <div>
-          <input type="new-password" name="password" placeholder=" Contraseña" className="inputs" value={newUser.password}
+          <input type="password" name="password" placeholder=" Contraseña" className="inputs" value={newUser.password}
          onChange={handleInputChange} />
         </div>
           {error && <p className='alert-error'>{message}</p>}
